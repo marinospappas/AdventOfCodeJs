@@ -1,6 +1,10 @@
+import Solver from "../../aoc/solver.js"
 export default
 
 function SolverDay01() {
+
+    Solver.call(this)
+    
     const list1 = [];
     const list2 = [];
 
@@ -17,13 +21,13 @@ function SolverDay01() {
         list2.push(...l2.sort())
     };
 
-    this.part1 = function () {
+    this.solvePart1 = function () {
         let total = 0
         list1.keys().forEach(i => total += Math.abs(list1[i] - list2[i]))
         return (total);
     };
 
-    this.part2 = function () {
+    this.solvePart2 = function () {
         return sum(list1.map(item => item * count(list2, item)))
     };
 
