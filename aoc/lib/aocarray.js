@@ -1,3 +1,5 @@
+import Solver from "../solver.js"
+
 export default function AocArray(data) {
 
     Array.call(this, data)
@@ -11,7 +13,8 @@ export default function AocArray(data) {
     }
 }
 
-let x = new AocArray([1,2,3])
-console.log(x)
+let x = new Array([1,2,3])
+console.log('>', x)
+console.log('>>', x.entries)
 for (let k of Object.getOwnPropertyNames(x))
-    console.log(k)
+    console.log('>>>', k)
