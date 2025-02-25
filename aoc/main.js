@@ -7,12 +7,8 @@ const day = argv[0]
 const test = argv[1] === '-test'
 const config = new Config()
 
-const solver = config.getSolver(day)
-console.log(solver)
-for (let k of Object.getOwnPropertyNames(solver))
-    console.log(k)
-
 console.log(config.message)
+const solver = config.getSolver(day)
 solver.initialise(readInput(day, config.year, test))
 console.log(initCompleteMsg)
 for (let i of [1, 2]) {
