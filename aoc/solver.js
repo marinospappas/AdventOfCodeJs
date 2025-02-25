@@ -1,6 +1,4 @@
-export default
-
-function Solver() {
+export default function Solver() {
     Object.defineProperty(this, 'part1', {
         get: function() {
             return runWithElapsed(this['solvePart1'], this)

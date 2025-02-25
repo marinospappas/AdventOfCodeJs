@@ -1,10 +1,9 @@
 import Solver from "../../aoc/solver.js"
-export default
 
-function SolverDay01() {
+export default function SolverDay01() {
 
     Solver.call(this)
-    
+
     const list1 = [];
     const list2 = [];
 
