@@ -8,6 +8,10 @@ const test = argv[1] === '-test'
 const config = new Config()
 
 const solver = config.getSolver(day)
+console.log(solver)
+for (let k of Object.getOwnPropertyNames(solver))
+    console.log(k)
+
 console.log(config.message)
 solver.initialise(readInput(day, config.year, test))
 console.log(initCompleteMsg)
