@@ -1,20 +1,12 @@
 import Solver from "../solver.js"
 
-export default function AocArray(data) {
+export default class AocArray {
 
-    Array.call(this, data)
-
-    this.count = function(item) {
-        return this.reduce((acc, curr) => (curr === item) ? acc + 1 : acc, 0)
+    static count(array, item) {
+        return array.reduce((acc, curr) => (curr === item) ? acc + 1 : acc, 0)
     }
     
-    this.sum = function() {
-        return this.reduce((acc, curr) => acc + curr, 0)
+    static sum(array) {
+        return array.reduce((acc, curr) => acc + curr, 0)
     }
 }
-
-let x = new Array([1,2,3])
-console.log('>', x)
-console.log('>>', x.entries)
-for (let k of Object.getOwnPropertyNames(x))
-    console.log('>>>', k)

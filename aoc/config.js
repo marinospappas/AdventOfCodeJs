@@ -1,20 +1,20 @@
 import * as solverInstances from "../solvers/indexSolvers.js"
 
-export default function Config() {
-    const aocYear = 2024
-    const initialMsg = `>>> AoC ${aocYear} (JS version) <<<`
-    const solvers = initSolvers()
-    this.getSolver = function(day) {
-        return solvers[aocYear][day]
+export default class Config {
+    static year = 2024
+    static message = `>>> AoC ${Config.year} (JS version) <<<`
+    
+    static getSolver = function(day) {
+        return Config.solvers[Config.year][day]
     }
-    Object.defineProperty(this, 'year', { get: function() { return aocYear } })
-    Object.defineProperty(this, 'message', { get: function() { return initialMsg } })
 
-    function initSolvers() {
+    static initSolvers() {
         return {
             2024: {
                 1: new solverInstances.SolverDay01()
             }
         }
     }
+
+    static solvers = Config.initSolvers()
 }

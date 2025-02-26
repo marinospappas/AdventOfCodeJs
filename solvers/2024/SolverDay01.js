@@ -1,13 +1,13 @@
 import Solver from "../../aoc/solver.js"
+import AocArray from "../../aoc/lib/aocarray.js"
 
-export default function SolverDay01() {
+// private variables go here
+const _list1 = new WeakMap()
+const _list2 = new WeakMap()
 
-    Solver.call(this)
+export default class SolverDay01 extends Solver {
 
-    const list1 = [];
-    const list2 = [];
-
-    this.initialise = function (data) {
+    initialise(data) {
         const l1 = [], l2 = []
         data.map(line => {
             const parts = line.split(/ +/);
@@ -16,24 +16,21 @@ export default function SolverDay01() {
             l1.push(element.a);
             l2.push(element.b);
         });
-        list1.push(...l1.sort())
-        list2.push(...l2.sort())
+        _list1.set(this, l1.sort());
+        _list2.set(this, l2.sort());
     };
 
-    this.solvePart1 = function () {
+    solvePart1() {
         let total = 0
-        list1.keys().forEach(i => total += Math.abs(list1[i] - list2[i]))
+        const l1 = _list1.get(this)
+        const l2 = _list2.get(this)
+        l1.keys().forEach(i => total += Math.abs(l1[i] - l2[i]))
         return (total);
     };
 
-    this.solvePart2 = function () {
-        return sum(list1.map(item => item * count(list2, item)))
+    solvePart2() {
+        const l1 = _list1.get(this)
+        const l2 = _list2.get(this)
+        return AocArray.sum(l1.map(item => item * AocArray.count(l2, item)))
     };
-
-    function count(array, item) {
-        return array.reduce((acc, curr) => (curr === item) ? acc + 1 : acc, 0)
-    }
-    function sum(array) {
-        return array.reduce((acc, curr) => acc + curr, 0)
-    }
 }
