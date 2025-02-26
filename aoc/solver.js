@@ -1,11 +1,11 @@
 export default class Solver {
 
     get part1() {
-        return Solver.runWithElapsed(this['solvePart1'], this)
+        return Solver.runWithElapsed(this.solvePart1, this)
      }
 
     get part2() {
-        return Solver.runWithElapsed(this['solvePart2'], this)
+        return Solver.runWithElapsed(this.solvePart2, this)
     }
 
     static runWithElapsed(func, scope) {
