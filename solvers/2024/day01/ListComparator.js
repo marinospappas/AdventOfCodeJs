@@ -5,7 +5,7 @@ import {AocArray} from "../../../aoc/lib/aocarray.js"
 const _list1 = new WeakMap()
 const _list2 = new WeakMap()
 
-export default class SolverDay01 extends Solver {
+export default class ListComparator extends Solver {
 
     initialise(data) {
         const l1 = [], l2 = []

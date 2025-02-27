@@ -1,4 +1,4 @@
-import * as solverInstances from "../solvers/indexSolvers.js"
+import * as modules from "../solvers/indexSolvers.js"
 
 export class Config {
     static year = 2024
@@ -11,8 +11,8 @@ export class Config {
     static initSolvers() {
         return {
             2024: {
-                1: new solverInstances.SolverDay01(),
-                2: new solverInstances.SolverDay02()
+                1: new modules.Solver2024D01(),
+                2: new modules.Solver2024D02()
             }
         }
     }

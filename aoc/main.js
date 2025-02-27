@@ -1,6 +1,8 @@
 import {Config} from './config.js'
 import {readInput} from './inputreader.js' 
 
+// must be run from ./aoc - all imports are relative to this dir 
+
 const initCompleteMsg = '=> Initialisation complete'
 const argv = process.argv.slice(2) 
 const day = argv[0]
