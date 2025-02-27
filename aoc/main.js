@@ -1,5 +1,5 @@
-import Config from './config.js'
-import readInput from './inputreader.js' 
+import {Config} from './config.js'
+import {readInput} from './inputreader.js' 
 
 const initCompleteMsg = '=> Initialisation complete'
 const argv = process.argv.slice(2) 

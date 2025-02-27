@@ -1,6 +1,5 @@
-import Solver from "../solver.js"
 
-export default class AocArray {
+export class AocArray {
 
     static count(array, item) {
         return array.reduce((acc, curr) => (curr === item) ? acc + 1 : acc, 0)

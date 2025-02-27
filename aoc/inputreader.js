@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 
-export default function readInput(day, year, test = false) {
+export function readInput(day, year, test = false) {
     try {
         const fileName = `input${day < 10 ? '0' + day : day}.txt`
         const dirName = `../data/${year}${test ? '/test' : ''}`

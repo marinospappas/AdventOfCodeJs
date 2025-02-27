@@ -1,6 +1,6 @@
 import * as solverInstances from "../solvers/indexSolvers.js"
 
-export default class Config {
+export class Config {
     static year = 2024
     static message = `>>> AoC ${Config.year} (JS version) <<<`
     

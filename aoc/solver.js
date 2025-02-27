@@ -1,4 +1,4 @@
-export default class Solver {
+export class Solver {
 
     get part1() {
         return Solver.runWithElapsed(this.solvePart1, this)
