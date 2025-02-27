@@ -11,7 +11,8 @@ export class Config {
     static initSolvers() {
         return {
             2024: {
-                1: new solverInstances.SolverDay01()
+                1: new solverInstances.SolverDay01(),
+                2: new solverInstances.SolverDay02()
             }
         }
     }
