@@ -1,5 +1,5 @@
-import {Config} from './config.js'
-import {readInput} from './inputreader.js' 
+import {Config} from './Config.js';
+import {readInput} from './inputReader.js' 
 
 // must be run from ./aoc - all imports are relative to this dir 
 
@@ -8,7 +8,7 @@ const argv = process.argv.slice(2) ;
 const day = argv[0];
 const test = argv[1] === '-test';
 
-console.log(Config.message);
+console.log('\n', Config.message);
 const solver = Config.getSolver(day);
 solver.initialise(readInput(day, Config.year, test));
 console.log(initCompleteMsg);

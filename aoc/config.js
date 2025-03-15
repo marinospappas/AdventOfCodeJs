@@ -1,11 +1,11 @@
 import * as modules from "../solvers/indexSolvers.js"
 
 export class Config {
-    static year = 2024
-    static message = `\n>>> AoC ${Config.year} (JS version) <<<`
+    static year = 2024;
+    static message = `>>> AoC ${Config.year} (JS version) <<<`;
     
     static getSolver = function(day) {
-        return Config.solvers[Config.year][day]
+        return Config.solvers[Config.year][day];
     }
 
     static initSolvers() {
@@ -17,5 +17,5 @@ export class Config {
         }
     }
 
-    static solvers = Config.initSolvers()
+    static solvers = Config.initSolvers();
 }
