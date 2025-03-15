@@ -8,7 +8,7 @@ export class Config {
         return Config.solvers[Config.year][day];
     }
 
-    static initSolvers() {
+    static getSolvers() {
         return {
             2024: {
                 1: new modules.Solver2024D01(),
@@ -17,5 +17,5 @@ export class Config {
         }
     }
 
-    static solvers = Config.initSolvers();
+    static solvers = Config.getSolvers();
 }
