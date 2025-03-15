@@ -1,5 +1,4 @@
 import {Solver} from "../../../aoc/Solver.js"
-import {AocArray} from "../../../aoc/lib/AocArray.js"
 
 // private variables go here
 const _list = new WeakMap()
