@@ -12,7 +12,8 @@ export class Config {
         return {
             2024: {
                 1: new modules.Solver2024D01(),
-                2: new modules.Solver2024D02()
+                2: new modules.Solver2024D02(),
+                3: new modules.Solver2024D03()
             }
         }
     }

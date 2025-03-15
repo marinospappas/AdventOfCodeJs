@@ -18,7 +18,7 @@ export default class ListComparator extends Solver {
         });
         _list1.set(this, l1.sort());
         _list2.set(this, l2.sort());
-    };
+    }
 
     solvePart1() {
         let total = 0;

@@ -10,12 +10,12 @@ export default class ReportAnalyser extends Solver {
         const l1 = [];
         l1.push(...data.map(line => line.split(/ +/)));
         _list.set(this, l1);
-    };
+    }
 
     solvePart1() {
         const dataList = _list.get(this);
         return dataList.reduce((acc, curr) => this.isSafe(curr) ? acc + 1 : acc, 0);
-    };
+    }
 
     solvePart2() {
         const safeCount = this.solvePart1();
@@ -30,7 +30,7 @@ export default class ReportAnalyser extends Solver {
             return 0
         }).reduce((acc, cur) => acc + cur);
         return safeCount + unsafeToSafeCount;
-    };
+    }
 
     isSafe(list) {
         if (list.length < 2)
