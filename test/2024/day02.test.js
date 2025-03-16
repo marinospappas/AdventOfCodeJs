@@ -3,7 +3,7 @@ import {Config} from "../../aoc/Config.js";
 import {readInput} from '../../aoc/inputReader.js' 
 import ReportAnalyser from "../../solvers/2024/day02/ReportAnalyser.js";
 
-// run from test directory
+// run from ./test directory
 
 const SKIP = true;
 const solver = new ReportAnalyser();

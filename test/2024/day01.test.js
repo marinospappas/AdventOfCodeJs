@@ -3,7 +3,7 @@ import {Config} from "../../aoc/Config.js";
 import {readInput} from '../../aoc/inputReader.js' 
 import ListComparator from "../../solvers/2024/day01/ListComparator.js";
 
-// run from test directory
+// run from ./test directory
 
 const SKIP = true;
 const solver = new ListComparator();

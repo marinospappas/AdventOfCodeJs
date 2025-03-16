@@ -6,11 +6,10 @@ import {readInput} from './inputReader.js'
 const initCompleteMsg = '=> Initialisation complete';
 const argv = process.argv.slice(2) ;
 const day = argv[0];
-const test = argv[1] === '-test';
 
 console.log('\n', Config.message);
 const solver = Config.getSolver(day);
-solver.initialise(readInput(day, Config.year, test));
+solver.initialise(readInput(day, Config.year));
 console.log(initCompleteMsg);
 for (let i of [1, 2]) {
     const result = solver[`part${i}`];
