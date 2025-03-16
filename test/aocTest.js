@@ -48,16 +48,45 @@ class AocTestResult {
         this.skip = skip;
     }
 
-    shouldBe(expected) {
-        if (this.skip) {
-            skipTest(this.description);
+    is(expected) {
+        if (this.checkSkip(this.skip))
             return true;
-        }
         if (isEqual(this.actual, expected)) {
             passTest(this.description, this.actual);
         } else {
             failTest(this.description, expected, this.actual);
         }
+    }
+
+    throws(expected) {
+        if (this.checkSkip(this.skip))
+            return true;
+        if (this.actual.startsWith('Exception:') && this.actual.endsWith(expected)) {
+            passTest(this.description, this.actual);
+        } else {
+            failTest(this.description, `Exception: ${expected}`, this.actual);
+        }
+    }
+
+    hasLength(expected) {
+        if (this.checkSkip(this.skip))
+            return true;
+        if (!Array.isArray(this.actual)) {
+            failTest(this.description, expected, `Not an array: ${this.actual}`);
+        } else if (this.actual.length !== expected) {
+            failTest(this.description, expected, this.actual.length);
+        } else {
+            passTest(this.description, this.actual.length);
+        }
+
+    }
+
+    // todo: add matchers - contains, doesNotContain, doesNotThrow
+
+    checkSkip(skip) {
+        if (skip) 
+            skipTest(this.description);
+        return skip;
     }
 }
 
@@ -66,9 +95,9 @@ class AocParameterisedTestResult {
         this.results = results;
     }
 
-    shouldBe(expected) {
+    is(expected) {
         for (let index in expected) {
-            this.results[index].shouldBe(expected[index])
+            this.results[index].is(expected[index])
         }
     }
 }

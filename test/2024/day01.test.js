@@ -11,19 +11,19 @@ solver.initialise(readInput(1, Config.year, true));
 console.log('');
 
 test('verify both lists read', solver)
-    .resultOf(() => solver.inputData.length)
-    .shouldBe(2);
+    .resultOf(() => solver.inputData)
+    .hasLength(2);
 
 test('verify both lists have correct length', solver)
     .resultOf(() => solver.inputData[0].length === 6 && solver.inputData[1].length === 6)
-    .shouldBe(true);
+    .is(true);
 
 test('execute part 1', solver)
     .resultOf(solver.solvePart1)
-    .shouldBe(11);
+    .is(11);
 
 test('execute part 2', solver)
     .resultOf(solver.solvePart2)
-    .shouldBe(31);
+    .is(31);
 
 console.log('');

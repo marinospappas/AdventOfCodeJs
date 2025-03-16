@@ -11,12 +11,12 @@ solver.initialise(readInput(2, Config.year, true));
 console.log('');
 
 test('verify number of lists read', solver)
-    .resultOf(() => solver.inputData.length)   
-    .shouldBe(6);
+    .resultOf(() => solver.inputData)   
+    .hasLength(6);
 
 test('verify length of input data lists', solver) 
-    .resultOf(() => solver.inputData.filter(l => l.length === 5).length)
-    .shouldBe(6);
+    .resultOf(() => solver.inputData.filter(l => l.length === 5))
+    .hasLength(6);
 
 const inputs1 = [
     [[7, 6, 4, 2, 1]],
@@ -29,14 +29,14 @@ const inputs1 = [
 const expected1 = [true, false, false, false, false, true];
 test('checks list is safe', solver)
     .resultOf(solver.isSafe, inputs1)
-    .shouldBe(expected1);
+    .is(expected1);
 
 test('execute part 1', solver) 
     .resultOf(solver.solvePart1)
-    .shouldBe(2);
+    .is(2);
 
 test('execute part 2', solver)
     .resultOf(solver.solvePart2)    
-    .shouldBe(4);
+    .is(4);
 
 console.log('');
