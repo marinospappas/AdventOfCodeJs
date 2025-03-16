@@ -1,29 +1,90 @@
-const RED = "\x1b[31m";
-const GREEN = "\x1b[32m";
-const RESET = "\x1b[0m";
+
+export function test(description, f, skip = false) {
+    return new AocTestResult(description, f(), skip);
+}
+
+export function parameterisedTest(description, context, f, inputs, skip = false) {
+    if (skip)
+        return new AocTestResult(description, null, skip);
+    const actual = [];
+    for (let input of inputs) {
+        actual.push(f.apply(context, input))
+    }
+    return new AocParameterisedTestResult(description, inputs, actual, skip);
+}
 
 class AocTestResult {
-    constructor(decription, actual) {
-        this.decription = decription;
+    constructor(description, actual, skip) {
+        this.description = description;
         this.actual = actual;
+        this.skip = skip;
     }
 
     expect(expected) {
-        if (this.isEqual(this.actual, expected)) {
-            console.log(`${GREEN}PASSED${RESET} - ${this.decription}`);
-        } else {
-            console.error(`${RED}*FAILED - ${this.decription}${RESET}`);
-            console.error(`           expected ${expected}`);
-            console.error(`           actual   ${this.actual}`);
+        if (this.skip) {
+            console.log(`${blue('SKIP')} - ${this.description}`)
+            return true;
         }
-    }
-
-    isEqual(a, b) {
-        //todo: needs more thinking
-        return a === b;
+        if (isEqual(this.actual, expected)) {
+            pass(this.description, this.actual);
+            return true;
+        } else {
+            fail(this.description, expected, this.actual);
+            return false;
+        }
     }
 }
 
-export function test(description, f) {
-    return new AocTestResult(description, f());
+class AocParameterisedTestResult {
+    constructor(description, inputs, actual, skip) {
+        this.description = description;
+        this.inputs = inputs;
+        this.actual = actual;
+        this.skip = skip;
+    }
+
+    expect(expected) {
+        if (this.skip) {
+            console.log(`${blue('SKIP')} - ${this.description}`)
+            return true;
+        }
+        for (let index = 0; index < expected.length; ++index) {
+            if (isEqual(this.actual[index], expected[index])) {
+                pass(`${this.description}, input: ${this.inputs[index]}`, this.actual[index]);
+            } else {
+                fail(`${this.description}, input: ${this.inputs[index]}`, expected[index], this.actual[index]);
+            }
+        }
+    }
+}
+
+function pass(message, result) {
+    console.log(`${green('PASS')} - ${message}, result: ${result}`);
+}
+
+function fail(message, expected, actual) {
+    console.log(red(`FAIL - ${message}`));
+    console.log(`    expected: ${JSON.stringify(expected)}`);
+    console.log(`    actual:   ${red(JSON.stringify(actual))}`);
+}
+
+const RED = "\x1b[31m";
+const GREEN = "\x1b[32m";
+const BLUE = "\x1b[34m";
+const RESET = "\x1b[0m";
+
+function red(s) {
+    return `${RED}${s}${RESET}`;
+}
+
+function green(s) {
+    return `${GREEN}${s}${RESET}`;
+}
+
+function blue(s) {
+    return `${BLUE}${s}${RESET}`;
+}
+
+function isEqual(a, b) {
+    return JSON.stringify(a) === JSON.stringify(b);
 }

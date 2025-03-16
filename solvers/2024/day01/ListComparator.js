@@ -20,6 +20,10 @@ export default class ListComparator extends Solver {
         _list2.set(this, l2.sort());
     }
 
+    getInputData() {
+        return [_list1.get(this), _list2.get(this)];
+    }
+
     solvePart1() {
         let total = 0;
         const l1 = _list1.get(this);

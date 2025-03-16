@@ -11,6 +11,10 @@ export default class ReportAnalyser extends Solver {
         _list.set(this, l1);
     }
 
+    getInputData() {
+        return _list.get(this);
+    }
+
     solvePart1() {
         const dataList = _list.get(this);
         return dataList.reduce((acc, curr) => this.isSafe(curr) ? acc + 1 : acc, 0);

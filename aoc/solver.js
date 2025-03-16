@@ -1,5 +1,9 @@
 export class Solver {
 
+    get inputData() {
+        return this.getInputData();
+    }
+
     get part1() {
         return Solver.runWithElapsed(this.solvePart1, this);
      }
