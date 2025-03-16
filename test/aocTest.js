@@ -22,15 +22,13 @@ class AocTestResult {
 
     expect(expected) {
         if (this.skip) {
-            console.log(`${blue('SKIP')} - ${this.description}`)
+            skip(this.description);
             return true;
         }
         if (isEqual(this.actual, expected)) {
             pass(this.description, this.actual);
-            return true;
         } else {
             fail(this.description, expected, this.actual);
-            return false;
         }
     }
 }
@@ -45,7 +43,7 @@ class AocParameterisedTestResult {
 
     expect(expected) {
         if (this.skip) {
-            console.log(`${blue('SKIP')} - ${this.description}`)
+            skip(this.description);
             return true;
         }
         for (let index = 0; index < expected.length; ++index) {
@@ -66,6 +64,10 @@ function fail(message, expected, actual) {
     console.log(red(`FAIL - ${message}`));
     console.log(`    expected: ${JSON.stringify(expected)}`);
     console.log(`    actual:   ${red(JSON.stringify(actual))}`);
+}
+
+function skip(message) {
+    console.log(`${blue('SKIP')} - ${message}`)
 }
 
 const RED = "\x1b[31m";
