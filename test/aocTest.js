@@ -1,16 +1,28 @@
 
-export function test(description, f, skip = false) {
-    return new AocTestResult(description, f(), skip);
+export function test(description, scope, skip = false) {
+    return new AocTest(description, scope, skip);
 }
 
-export function parameterisedTest(description, context, f, inputs, skip = false) {
-    if (skip)
-        return new AocTestResult(description, null, skip);
-    const actual = [];
-    for (let input of inputs) {
-        actual.push(f.apply(context, input))
+class AocTest {
+    constructor(description, scope, skip) {
+        this.description = description;
+        this.scope = scope;
+        this.skip = skip;
     }
-    return new AocParameterisedTestResult(description, inputs, actual, skip);
+
+    resultOf(f, inputs) {
+        if (this.skip)
+            return new AocTestResult(this.description, null, true);
+        if (inputs === undefined) {     // single test
+            return new AocTestResult(this.description, f.apply(this.scope), false);
+        } else {                        // parameterised test
+            const results = [];
+            for (let params of inputs) {
+                results.push(new AocTestResult(this.description, f.apply(this.scope, params), false))
+            }
+            return new AocParameterisedTestResult(this.description, inputs, results, false);
+        }
+    }
 }
 
 class AocTestResult {
@@ -20,53 +32,50 @@ class AocTestResult {
         this.skip = skip;
     }
 
-    expect(expected) {
+    shouldBe(expected, input = "") {
         if (this.skip) {
-            skip(this.description);
+            skipTest(this.description);
             return true;
         }
+        const message = `${this.description}${input ? ', input: ' + input : ''}`;
         if (isEqual(this.actual, expected)) {
-            pass(this.description, this.actual);
+            passTest(message, this.actual);
         } else {
-            fail(this.description, expected, this.actual);
+            failTest(message, expected, this.actual);
         }
     }
 }
 
 class AocParameterisedTestResult {
-    constructor(description, inputs, actual, skip) {
+    constructor(description, inputs, results, skip) {
         this.description = description;
         this.inputs = inputs;
-        this.actual = actual;
+        this.results = results;
         this.skip = skip;
     }
 
-    expect(expected) {
+    shouldBe(expected) {
         if (this.skip) {
-            skip(this.description);
+            skipTest(this.description);
             return true;
         }
         for (let index = 0; index < expected.length; ++index) {
-            if (isEqual(this.actual[index], expected[index])) {
-                pass(`${this.description}, input: ${this.inputs[index]}`, this.actual[index]);
-            } else {
-                fail(`${this.description}, input: ${this.inputs[index]}`, expected[index], this.actual[index]);
-            }
+            this.results[index].shouldBe(expected[index], this.inputs[index])
         }
     }
 }
 
-function pass(message, result) {
+function passTest(message, result) {
     console.log(`${green('PASS')} - ${message}, result: ${result}`);
 }
 
-function fail(message, expected, actual) {
+function failTest(message, expected, actual) {
     console.log(red(`FAIL - ${message}`));
     console.log(`    expected: ${JSON.stringify(expected)}`);
     console.log(`    actual:   ${red(JSON.stringify(actual))}`);
 }
 
-function skip(message) {
+function skipTest(message) {
     console.log(`${blue('SKIP')} - ${message}`)
 }
 
