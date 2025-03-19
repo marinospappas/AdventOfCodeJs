@@ -13,8 +13,8 @@ export default class ListComparator extends Solver {
             const parts = line.split(/ +/);
             return { a: parts[0], b: parts[1] };
         }).forEach(element => {
-            l1.push(element.a);
-            l2.push(element.b);
+            l1.push(parseInt(element.a));
+            l2.push(parseInt(element.b));
         });
         _list1.set(this, l1.sort());
         _list2.set(this, l2.sort());

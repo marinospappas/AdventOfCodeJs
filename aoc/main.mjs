@@ -7,7 +7,7 @@ const initCompleteMsg = '=> Initialisation complete';
 const argv = process.argv.slice(2) ;
 const day = argv[0];
 
-console.log('\n', Config.message);
+console.log('\n', Config.message + `Day ${day} <<<`);
 const solver = Config.getSolver(day);
 solver.initialise(readInput(day, Config.year));
 console.log(initCompleteMsg);

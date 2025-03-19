@@ -71,8 +71,8 @@ class AocTestResult {
     hasLength(expected) {
         if (this.checkSkip(this.skip))
             return true;
-        if (!Array.isArray(this.actual)) {
-            failTest(this.description, expected, `Not an array: ${this.actual}`);
+        if (!Array.isArray(this.actual) && !this.actual instanceof String) {
+            failTest(this.description, expected, `Not an array or string: ${this.actual}`);
         } else if (this.actual.length !== expected) {
             failTest(this.description, expected, this.actual.length);
         } else {

@@ -6,9 +6,10 @@ import ReportAnalyser from "../../solvers/2024/day02/ReportAnalyser.js";
 // run from ./test directory
 
 const SKIP = true;
+const day = 2;
 const solver = new ReportAnalyser();
-solver.initialise(readInput(2, Config.year, true));
-console.log('');
+solver.initialise(readInput(day, Config.year, true));
+console.log('\n', Config.message + `Day ${day} Test <<<`);
 
 test('verify number of lists read', solver)
     .resultOf(() => solver.inputData)   
