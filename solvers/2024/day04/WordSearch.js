@@ -1,7 +1,7 @@
 import {Solver} from "../../../aoc/Solver.js"
 import {SimpleGrid} from "../../../aoc/lib/SimpleGrid.js";
 import {Direction} from "../../../aoc/lib/Direction.js";
-import {Point} from "../../../aoc/lib/Point.js";
+import {AocArray} from "../../../aoc/lib/AocArray.js";
 
 // private variables go here
 const _list = new WeakMap()
@@ -31,11 +31,19 @@ export default class WordSearch extends Solver {
             return Direction.ALL_DIRECTIONS.filter(dir => this.getWord(p, dir, grid) === this.searchWord).length;
     }
 
+    matchesXMas(p, grid) {
+        return grid.getDataPoint(p) === this.wordStart.p2 && AocArray.contains(['MMSS', 'SMMS', 'SSMM', 'MSSM'], 
+            [Direction.NW, Direction.NE, Direction.SE, Direction.SW].map(dir => grid.getDataPoint(p.plus(dir.increment))).join('')
+        );
+    }
+
     solvePart1() {
         const grid = _list.get(this);
         return grid.getAllPoints().map( p => this.countWordMatches(p, grid) ).reduce((acc, cur) => acc + cur, 0);
     }
 
     solvePart2() {
+        const grid = _list.get(this);
+        return grid.getAllPoints().filter( p => this.matchesXMas(p, grid) ).length;
     }
 }

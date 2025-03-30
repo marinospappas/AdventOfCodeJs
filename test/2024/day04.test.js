@@ -25,6 +25,6 @@ test('execute part 1', solver)
 
 test('execute part 2', solver)
     .resultOf(solver.solvePart2)
-    .is(48);
+    .is(9);
 
 console.log('');
