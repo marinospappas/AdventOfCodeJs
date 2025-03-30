@@ -36,7 +36,7 @@ class AocTest {
         try {
             return f.apply(scope, params);
         } catch (error) {
-            return `Exception: ${error.message}`;
+            return `Exception: ${error}`;
         }
     }
 }

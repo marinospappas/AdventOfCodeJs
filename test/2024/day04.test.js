@@ -21,7 +21,7 @@ test('verify input data is read', solver)
 
 test('execute part 1', solver)
     .resultOf(solver.solvePart1)
-    .is(161);
+    .is(18);
 
 test('execute part 2', solver)
     .resultOf(solver.solvePart2)

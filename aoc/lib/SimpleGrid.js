@@ -1,3 +1,5 @@
+import {Point} from "./Point.js";
+
 export class SimpleGrid {
     constructor(data) {
         this.data = data.map(line => Array.from(line));
@@ -22,6 +24,23 @@ export class SimpleGrid {
     setDataPoint(p, c) {
         if (this.isInsideGrid(p))
             this.data[p.y][p.x] = c;
+    }
+
+    getAllPoints() {
+        const points = [];
+        for (let y = 0; y <= this.maxY; ++y)
+            for (let x = 0; x <= this.maxX; ++x)
+                points.push(new Point(x, y));
+        return points;
+    }
+
+    getAdjacentDataPoints(p) {
+        return p.adjacent().filter(p => this.isInsideGrid(p)).map(p => this.getDataPoint(p))
+    }
+
+    getAdjacentDataPointsCardinal(p) {
+        return p.adjacentCardinal().filter(p => this.isInsideGrid(p)).map(p => this.getDataPoint(p))
+
     }
 
     toString() {

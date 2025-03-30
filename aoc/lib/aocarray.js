@@ -9,4 +9,8 @@ export class AocArray {
     static sum(array) {
         return array.reduce((acc, curr) => acc + curr, 0);
     }
+
+    static contains(array, element) {
+        return array.indexOf(element) >= 0
+    }
 }

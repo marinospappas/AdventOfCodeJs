@@ -1,3 +1,5 @@
+import {Point} from "./Point.js"
+
 export class Direction {
     constructor (symbol) {
         this.symbol = symbol;
