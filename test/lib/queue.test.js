@@ -47,6 +47,18 @@ test('queue is empty after reading all items', null)
         })
         .is(true);
 
+test('peek returns head of queue without removing it', null)
+    .resultOf(() => {
+        const queue = new Queue();
+        queue.write(1);
+        queue.write(2);
+        queue.write(3);
+        const i1 = queue.peek();
+        const i1_1 = queue.read();
+        return i1 === 1 && i1_1 === 1;
+    })
+    .is(true);
+
 test('queue toString returns all the elements in order of insertion', null)
     .resultOf(() => {
         const queue = new Queue();

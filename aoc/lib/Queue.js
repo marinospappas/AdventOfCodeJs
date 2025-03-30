@@ -1,13 +1,13 @@
 export class Queue {
     constructor() {
-        //todo: empty queue must be head = null
-        this.head = {data: null, next: null}
+        this.head = null;
         this.tail = this.head;
     }
 
     write(item) {
-        if (this.tail.data === null) {
-            this.tail.data = item;
+        if (this.tail === null) {
+            this.tail = {data: item, next: null};
+            this.head = this.tail;
         } else {
             this.tail.next = {data: item, next: null};
             this.tail = this.tail.next;
@@ -15,6 +15,8 @@ export class Queue {
     }
 
     read() {
+        if (this.head === null)
+            return null;
         const item = this.head.data;
         this.head = this.head.next;
         return item;
@@ -25,16 +27,14 @@ export class Queue {
     }
 
     isEmpty() {
-        return this.head.data === null;
+        return this.head === null;
     }
 
     toString() {
         let qArray = [];
         let q = this.head;
-        let item = '';
-        while(item !== null && q !== null) {
-            item = q.data;
-            qArray.push(item);
+        while(q !== null) {
+            qArray.push(q.data);
             q = q.next
         }
         return '[' + qArray.join(',') + ']';

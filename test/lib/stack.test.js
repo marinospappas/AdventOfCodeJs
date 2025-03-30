@@ -78,7 +78,7 @@ test('length of stack is reduced after pop', null)
     })
     .is(true);
 
-test('stack toString returns all the elements in order of insertion', null)
+test('stack toString returns all the elements in lifo order', null)
     .resultOf(() => {
         const stack = new Stack();
         stack.push('a');
@@ -86,6 +86,6 @@ test('stack toString returns all the elements in order of insertion', null)
         stack.push('c');
         return stack.toString();
     })
-    .is('[a,b,c]');
+    .is('[c,b,a]');
 
 console.log('');

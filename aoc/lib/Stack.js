@@ -24,6 +24,6 @@ export class Stack {
     }
 
     toString() {
-        return '[' + this.stack.join(',') + ']';
+        return '[' + this.stack.reverse().join(',') + ']';
     }
 }
