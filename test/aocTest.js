@@ -133,6 +133,6 @@ function blue(s) {
     return `${BLUE}${s}${RESET}`;
 }
 
-function isEqual(a, b) {
+export function isEqual(a, b) {
     return JSON.stringify(a) === JSON.stringify(b);
 }
