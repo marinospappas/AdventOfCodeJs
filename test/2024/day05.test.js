@@ -16,16 +16,16 @@ test('verify input data is read', solver)
         const [rules, pagesList] = solver.inputData;
         console.log(rules.toString());
         console.log(pagesList);
-        return [rules.size, pagesList.length];
+        return [rules.length, pagesList.length];
     })
-    .is([7, 6]);
+    .is([21, 6]);
 
 test('execute part 1', solver)
     .resultOf(solver.solvePart1)
-    .is(0);
+    .is(143);
 
 test('execute part 2', solver)
     .resultOf(solver.solvePart2)
-    .is(0);
+    .is(123);
 
 console.log('');
