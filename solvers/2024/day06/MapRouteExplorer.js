@@ -20,6 +20,14 @@ export default class MapRouteExplorer extends Solver {
         return [_grid.get(this), _start.get(this)];
     }
 
+    buildRouteMapKey(point, dir) {
+        return 1000 * point.toInt() + dir.toInt();
+    }
+
+    deconstructRouteMapKey(key) {
+        return [Point.from(Math.floor(key / 1000)), new Direction(key % 1000)];
+    }
+
     // returns false if loop detected
     walkTheMap(grid, start, startDir, route, obstaclePoint = new Point(-1, -1)) {
         let [curPos, curDir] = [start, startDir];
@@ -27,18 +35,21 @@ export default class MapRouteExplorer extends Solver {
         const thisRoute = new Map();
         let routeIndex = 0;
         while (grid.getDataPoint(curPos) !== null) {
-            if (thisRoute.get([curPos, curDir]))
+            if (thisRoute.get(this.buildRouteMapKey(curPos, curDir)))
                 return false; // loop detected
             let nextPosition = curPos.plus(curDir.increment);
             while (grid.getDataPoint(nextPosition) === obstacle || nextPosition == obstaclePoint) {
                 curDir = curDir.turnRight()
                 nextPosition = curPos.plus(curDir.increment);
             }
-            thisRoute.set([curPos, curDir], routeIndex++);
+            thisRoute.set(this.buildRouteMapKey(curPos, curDir), routeIndex++);
             curPos = Point.from(nextPosition);
         }
         // now update the real route
-        Array.from(thisRoute.entries()).sort((e1, e2) => e1[1] - e2[1]).forEach(e => route.push(e[0]))
+        Array.from(thisRoute.entries()).sort((e1, e2) => e1[1] - e2[1]).forEach(e => {
+            const [p, dir] = this.deconstructRouteMapKey(e[0]);
+            route.push([p, dir])
+        });
         return true;
     }
 

@@ -2,8 +2,12 @@ import {Point} from "./Point.js"
 
 export class Direction {
     constructor (symbol) {
-        this.symbol = symbol;
-        switch (symbol) {
+        if (symbol === 0) this.symbol = 'N';
+        else if (symbol === 1) this.symbol = 'E';
+        else if (symbol === 2) this.symbol = 'S';
+        else if (symbol === 3) this.symbol = 'W';
+        else this.symbol = symbol;
+        switch (this.symbol) {
             case 'N': case '^': case 'U':
                 this.increment = new Point(0, -1);
                 break;
@@ -93,6 +97,15 @@ export class Direction {
 
     toString() {
         return `Dir(${this.symbol})`
+    }
+
+    toInt() {
+        switch(this.symbol) {
+            case 'N': case '^': case 'U': return 0; 
+            case 'E': case '>': case 'R': return 1; 
+            case 'S': case 'v': case 'D': return 2; 
+            case 'W': case '<': case 'L': return 3; 
+        }
     }
 
     static N = new Direction('N');

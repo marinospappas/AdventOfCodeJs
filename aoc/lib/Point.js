@@ -59,12 +59,18 @@ export class Point {
         return `Point(${this.x},${this.y})`
     }
 
-    static from(obj) {
+    toInt(factor = 1000) {
+        return this.y * factor + this.x;
+    }
+
+    static from(obj, factor = 1000) {
         if (obj instanceof String) {
             const a = obj.split(",");
             return new Point(parseInt(a[0], 10), parseInt(a[1], 10));
         } else if (obj instanceof Point) {
             return new Point(obj.x, obj.y);
+        } else if (Number.isInteger(obj)) {
+            return new Point(obj % factor, Math.floor(obj / factor));
         }
     }
 }
