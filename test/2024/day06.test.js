@@ -26,7 +26,7 @@ test('execute part 1', solver)
     .is(41);
 
 test('execute part 2', solver)
-    .resultOf(solver.solvePart2)
-    .is(0);
+    .resultOf(() => solver.solvePart2())
+    .is(6);
 
 console.log('');
