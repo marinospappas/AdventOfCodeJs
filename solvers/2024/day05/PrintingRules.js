@@ -31,8 +31,7 @@ export default class PrintingRules extends Solver {
         const pagesLists = _pagesLists.get(this);
         return pagesLists
             .filter(pages => this.areAllPagesInOrder(pages, graph))
-            .reduce((acc, cur) => 
-                acc + cur[Math.floor(cur.length / 2)], 0);
+            .reduce((acc, cur) => acc + cur[Math.floor(cur.length / 2)], 0);
     }
 
     solvePart2() {

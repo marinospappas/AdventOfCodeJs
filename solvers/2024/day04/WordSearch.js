@@ -4,18 +4,18 @@ import {Direction} from "../../../aoc/lib/Direction.js";
 import {AocArray} from "../../../aoc/lib/AocArray.js";
 
 // private variables go here
-const _list = new WeakMap()
+const _grid = new WeakMap()
 
 export default class WordSearch extends Solver {
 
     initialise(data) {
-        _list.set(this, new SimpleGrid(data));
+        _grid.set(this, new SimpleGrid(data));
         this.searchWord = "XMAS"
         this.wordStart = {p1: this.searchWord[0], p2: 'A'};
     }
 
     getInputData() {
-        return _list.get(this);
+        return _grid.get(this);
     }
 
     getWord(point, direction, grid) {
@@ -38,12 +38,12 @@ export default class WordSearch extends Solver {
     }
 
     solvePart1() {
-        const grid = _list.get(this);
+        const grid = _grid.get(this);
         return grid.getAllPoints().map( p => this.countWordMatches(p, grid) ).reduce((acc, cur) => acc + cur, 0);
     }
 
     solvePart2() {
-        const grid = _list.get(this);
+        const grid = _grid.get(this);
         return grid.getAllPoints().filter( p => this.matchesXMas(p, grid) ).length;
     }
 }

@@ -43,6 +43,18 @@ export class SimpleGrid {
 
     }
 
+    findFirst(item) {
+        for (let y = 0; y <= this.maxY; ++y)
+            for (let x = 0; x <= this.maxX; ++x)
+                if (this.data[y][x] === item)
+                    return new Point(x, y);
+        return null;
+    }
+
+    getDimensions() {
+        return [this.maxX + 1, this.maxY + 1]
+    }
+
     toString() {
         let s = '';
         for (const i in this.data) {
