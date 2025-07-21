@@ -7,5 +7,6 @@ export {default as Solver2024D05} from "./2024/day05/PrintingRules.js"
 export {default as Solver2024D06} from "./2024/day06/MapRouteExplorer.js"
 export {default as Solver2024D07} from "./2024/day07/OperatorsFinder.js"
 export {default as Solver2024D13} from "./2024/day13/ClawMovement.js"
+export {default as Solver2024D19} from "./2024/day19/StripePatterns.js"
 
 //
