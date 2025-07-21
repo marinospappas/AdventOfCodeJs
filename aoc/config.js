@@ -19,7 +19,8 @@ export class Config {
                 6:  new modules.Solver2024D06(),
                 7:  new modules.Solver2024D07(),
                 13: new modules.Solver2024D13(),
-                19: new modules.Solver2024D19()
+                19: new modules.Solver2024D19(),
+                25: new modules.Solver2024D25()
             }
         }
     }

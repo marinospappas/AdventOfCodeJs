@@ -43,6 +43,18 @@ export class SimpleGrid {
 
     }
 
+    getColumn(x) {
+        return [...Array(this.maxY + 1).keys()].map(i => this.data[i][x]);
+    }
+
+    getRow(y) {
+        return this.data[y];
+    }
+
+    getMaxX() {
+        return this.maxX;
+    }
+
     findFirst(item) {
         for (let y = 0; y <= this.maxY; ++y)
             for (let x = 0; x <= this.maxX; ++x)

@@ -1,5 +1,3 @@
-import { AocArray } from "../../../aoc/lib/AocArray.js";
-import { LinearEqSys } from "../../../aoc/lib/LinearEqSys.js";
 import {Solver} from "../../../aoc/Solver.js";
 
 // private variables go here
