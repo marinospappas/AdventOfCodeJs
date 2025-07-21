@@ -4,7 +4,7 @@ import {readInput} from '../../aoc/inputReader.js';
 
 // run from ./test directory
 
-const day = 6;
+const day = 7;
 
 const SKIP = true;
 const solver = Config.getSolver(day);
@@ -13,20 +13,18 @@ console.log('\n', Config.message + `Day ${day} Test <<<`);
 
 test('verify input data is read', solver)
     .resultOf(() => {
-        const [grid, start] = solver.inputData;
-        console.log(grid.toString());
-        console.log(start)
-        const [maxX, maxY] = grid.getDimensions();
-        return [maxX, maxY, start.x, start.y];
+        const inputData = solver.inputData;
+        console.log(inputData);
+        return inputData.length;
     })
-    .is([10, 10, 4, 6]);
+    .is(9);
 
 test('execute part 1', solver)
     .resultOf(solver.solvePart1)
-    .is(41);
+    .is(3749);
 
 test('execute part 2', solver)
     .resultOf(solver.solvePart2)
-    .is(6);
+    .is(11387);
 
 console.log('');
