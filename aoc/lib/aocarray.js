@@ -21,7 +21,17 @@ export class AocArray {
         for (let i = 0; i <= array.length; i += step) {
             result.push(array.slice(i, i + windowSize));
         }
-    return result;
+        return result;
     }
 
+    static fromString(str, step) {
+        if (step === undefined) step = 1;
+            const result = [];
+        for (let i = 0; i <= str.length; i += step) {
+            if (i + step > str.length) break;
+            const element = step === 2 ? str[i] + str[i+1] : str.substring(i, i + step);
+            result.push(element);
+        }
+        return result;
+    }
 }
