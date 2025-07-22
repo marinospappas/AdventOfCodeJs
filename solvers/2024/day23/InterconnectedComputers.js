@@ -17,9 +17,9 @@ export default class InterconnectedComputers extends Solver {
         return [_connections.get(this), _allIds.get(this)];
     }
 
-    findConnectedSetsN(n, connections, allIds, connectedGroupsN) {
+    findConnectedSetsN(n, connections, allIds) {
         let groupSize = 2;
-        let conGroups = new Set(connectedGroupsN);
+        let conGroups = new Set(connections);
         while (groupSize < n) {
             const result = new Set();
             // for each group in the current connected groups
@@ -43,14 +43,14 @@ export default class InterconnectedComputers extends Solver {
 
     solvePart1() {
         const [connections, allIds] = this.getInputData();  
-        let connectedGroups = this.findConnectedSetsN(3, connections, allIds, connections);
+        let connectedGroups = this.findConnectedSetsN(3, connections, allIds);
         this.maxGroupSize = connectedGroups.size;
         return [...connectedGroups].filter(s => s[0] === 't' || s[2] === 't' || s[4] === 't').length;
     }
 
     solvePart2() {
         const [connections, allIds] = this.getInputData();  
-        let connectedGroups = this.findConnectedSetsN(this.maxGroupSize, connections, allIds, connections);
+        let connectedGroups = this.findConnectedSetsN(this.maxGroupSize, connections, allIds);
         return AocArray.fromString([...connectedGroups][0], 2).join(',');
     }
 }

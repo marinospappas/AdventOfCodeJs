@@ -8,7 +8,8 @@ export {default as Solver2024D06} from "./2024/day06/MapRouteExplorer.js"
 export {default as Solver2024D07} from "./2024/day07/OperatorsFinder.js"
 export {default as Solver2024D13} from "./2024/day13/ClawMovement.js"
 export {default as Solver2024D19} from "./2024/day19/StripePatterns.js"
+export {default as Solver2024D22} from "./2024/day22/RandomNumberSimulator.js"
 export {default as Solver2024D23} from "./2024/day23/InterconnectedComputers.js"
 export {default as Solver2024D25} from "./2024/day25/LockDecoder.js"
 
-//
+// 
