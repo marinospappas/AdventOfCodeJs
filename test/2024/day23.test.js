@@ -1,7 +1,6 @@
 import {test} from "../aocTest.js";
 import {Config} from "../../aoc/Config.js";
 import {readInput} from '../../aoc/inputReader.js';
-import { AocArray } from "../../aoc/lib/AocArray.js";
 
 // run from ./test directory
 

@@ -23,8 +23,23 @@ test('execute part 1', solver)
     .resultOf(solver.solvePart1)
     .is(37327623);
 
-test('execute part 2', solver, SKIP)
+test('calculate differences', solver)
+    .resultOf(() => {
+        console.log(solver.generateDifferences(123, 9));
+        return true;
+    })
+    .is(true);
+
+test('calculate differences to numbers mapping', solver)
+    .resultOf(() => {
+        console.log(solver.generateDiffsToNumberMapping(solver.generateDifferences(123, 9)));
+        return true;
+    })
+    .is(true);
+
+solver.initialise(['1', '2', '3', '2024']);
+test('execute part 2', solver)
     .resultOf(solver.solvePart2)
-    .is('co,de,ka,ta');
+    .is(["-2,1,-1,3",23]);
 
 console.log('');
