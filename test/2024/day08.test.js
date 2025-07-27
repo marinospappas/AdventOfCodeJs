@@ -13,12 +13,11 @@ console.log('\n', Config.message + `Day ${day} Test <<<`);
 
 test('verify input data is read', solver)
     .resultOf(() => {
-        const [grid, antennaCodes] = solver.inputData;
+        const grid = solver.inputData;
         console.log(grid.toString());
-        console.log(Array.from(antennaCodes))
-        return [grid.getDimensions(), antennaCodes.size];
+        return grid.getDimensions();
     })
-    .is([[12, 12], 75]);
+    .is([12, 12]);
 
 test('execute part 1', solver)
     .resultOf(solver.solvePart1)
