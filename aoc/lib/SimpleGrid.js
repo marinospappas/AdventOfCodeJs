@@ -21,6 +21,10 @@ export class SimpleGrid {
         return this.isInsideGrid(p) ? this.data[p.y][p.x] : null;
     }
 
+    getAllDataValues() {
+        return new Set(this.data.flat());
+    }
+
     setDataPoint(p, c) {
         if (this.isInsideGrid(p))
             this.data[p.y][p.x] = c;
@@ -61,6 +65,15 @@ export class SimpleGrid {
                 if (this.data[y][x] === item)
                     return new Point(x, y);
         return null;
+    }
+
+    findAll(item) {
+        const points = [];
+        for (let y = 0; y <= this.maxY; ++y)
+            for (let x = 0; x <= this.maxX; ++x)
+                if (this.data[y][x] === item)
+                    points.push(new Point(x, y));
+        return points;
     }
 
     getDimensions() {
