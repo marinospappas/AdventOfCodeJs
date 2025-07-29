@@ -1,7 +1,5 @@
 import {Solver} from "../../../aoc/Solver.js";
 import {SimpleGrid} from "../../../aoc/lib/SimpleGrid.js";
-import {Point} from "../../../aoc/lib/Point.js";
-import { Direction } from "../../../aoc/lib/Direction.js";
 
 // private variables go here
 const _grid = new WeakMap();

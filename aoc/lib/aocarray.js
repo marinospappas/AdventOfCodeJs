@@ -34,4 +34,20 @@ export class AocArray {
         }
         return result;
     }
+
+    static indexWhere(array, predicate, startIndex) {
+        const start = startIndex || 0;
+        for (let i = start; i < array.length; ++i)
+            if (predicate(array[i]))
+                return i;
+        return -1;
+    }
+
+    static lastIndexWhere(array, predicate, startIndex) {
+        const start = startIndex || array.length - 1;
+        for (let i = start; i >= 0; --i)
+            if (predicate(array[i]))
+                return i;
+        return -1;
+    }
 }

@@ -1,12 +1,16 @@
 export class Solver {
 
+    constructor(test) {
+        this.test = test;
+    }
+
     get inputData() {
         return this.getInputData();
     }
 
     get part1() {
         return Solver.runWithElapsed(this.solvePart1, this);
-     }
+    }
 
     get part2() {
         return Solver.runWithElapsed(this.solvePart2, this);
